@@ -1,0 +1,308 @@
+Specifications for Hourly Climate Information:
+Last updated on 2-7-10
+
+-------------------------------------------
+Historical hourly information
+
+(1) city location identifier (up to 9 alphanumeric characters)|
+(2) observation time in UTC (String as YYYYMMDDhhmm)|
+(3) observation time in LST (Local Standard Time) (String as YYYYMMDDhhmm)|
+(4) observation time in local time (String as YYYYMMDDhhmm)|
+(5) daylight status (Character - 'D' for daytime icons, 'N' for nighttime icons)|
+(6) sky descriptor (Integer - see lookup)|
+(7) precipitation descriptor (Integer - see lookup)|
+(8) temperature descriptor (Integer - see lookup)|
+(9) additional air descriptor (optional) (Integer - see lookup)|
+(10) temperature (Floating Point - Celsius)|
+(11) wind speed (Floating Point - km/hr.)|
+(12) wind direction (Integer - compass degrees, 0 - 359, 0 == North)|
+(13) wind gusts [optional] (Floating  Point - km/hr.)|
+(14) humidity (Integer - percent)|
+(15) dew point (Floating Point - Celsius)|
+(16) comfort level (Floating Point - Celsius)|
+(17) sea level pressure (Floating Point - millibars)|
+(18) barometric tendency ('S' - Steady, 'F' - Falling, 'R' - Rising)|
+(19) visibility (Floating Point - kilometers)|
+(20) sky conditions (C-lear,F-ew,S-cattered,B-roken,O-vercast, X-obscured)|
+(21) minimum cloud base (Floating Point - meters)|
+(22) maximum cloud base (Floating Point - meters)|
+(23) weather type (+FC = tornado/waterspout, FC = funnel cloud, TS = thunderstorm, GR = hail, RA = rain, DZ = drizzle, SN = snow, SG = snow grains, GS = small hail &/or snow pellets, PE = ice pellets, IC = crystals, FG+ = heavy fog less than 0.25 miles vis, FG = fog, BR = mist, UP = unknown precip., HZ = haze, FU = smoke, VA = volcanic ash, DU = widespread dust, DS = duststorm, PO = sand/dust whirls, SA = sand, SS = sandstorm, PY = spray, SQ = squall) (DR - low drifting, SH - shower, FZ - freezing, MI - shallow, PR - partial, BC - patches, BL - blowing, VC - vicinity, - LIGHT, + HEAVY, 'NO SIGN' - moderate)|
+(24) hourly precip.  [optional] (Floating  Point - centimeters)|
+(25) 3 hour precipitation [optional] (Floating  Point - centimeters)|
+(26) 6 hour precipitation [optional] (Floating  Point - centimeters)|
+(27) 12 hour precipitation [optional] (Floating  Point - centimeters)|
+(28) 24 hour precipitation [optional] (Floating  Point - centimeters)|
+(29) 24-hr Maximum temperature [optional] (Floating Point - Celsius)|
+(30) 6 hour maximum temperature [optional] (Floating Point - Celsius)|
+(31) 24-hr Minimum temperature [optional] (Floating Point - Celsius)|
+(32) 6 hour minimum temperature [optional] (Floating Point - Celsius)|
+(33) Snow cover [optional] (Floating  Point - centimeters)|
+(34) Solar radiation [optional] (Integer - minutes)|
+
+Sample:
+
+KIAH|201909080553|201909072353|201909080053|N|2|*|10|*|27.22|7.41|190|*|74|22.22|29.64|1015.5|R|16.09|C|*|*|*|*|*|*|*|*|37.22|33.28|23.28|27.22|*|*|
+KIAH|201909080653|201909080053|201909080153|N|2|*|10|*|26.72|7.41|190|*|76|22.22|28.86|1015.3|*|16.09|C|*|*|*|*|*|*|*|*|*|*|*|*|*|*|
+KIAH|201909080753|201909080153|201909080253|N|2|*|10|*|26.11|5.56|230|*|79|22.22|27.85|1015.1|*|16.09|C|*|*|*|*|*|*|*|*|*|*|*|*|*|*|
+KIAH|201909080853|201909080253|201909080353|N|2|*|8|*|24.39|0|0|*|88|22.22|24.5|1014.9|F|16.09|C|*|*|*|*|*|*|*|*|*|*|*|*|*|*|
+KIAH|201909080953|201909080353|201909080453|N|2|*|8|*|23.89|0|0|*|90|22.22|23.34|1014.9|*|16.09|C|*|*|*|*|*|*|*|*|*|*|*|*|*|*|
+KIAH|201909081053|201909080453|201909080553|N|2|*|8|*|23.28|0|0|*|94|22.22|21.77|1015.1|*|16.09|C|*|*|*|*|*|*|*|*|*|*|*|*|*|*|
+
+All fields are rounded to the nearest hundredth's place and all fields are separated by a pipe symbol ("|"). All missing fields are represented by a star ("*"). 
+
+-------------------------------------------
+
+	Sky Descriptors:
+
+	SUNNY									= 1;
+	CLEAR									= 2;
+	MOSTLY SUNNY							= 3;
+	MOSTLY CLEAR							= 4;
+	HAZY SUNSHINE							= 5;
+	HAZE									= 6;
+	PASSING CLOUDS							= 7;
+	MORE SUN THAN CLOUDS					= 8;
+	SCATTERED CLOUDS						= 9;
+	PARTLY CLOUDY							= 10;
+	A MIXTURE OF SUN AND CLOUDS				= 11;
+	HIGH LEVEL CLOUDS						= 12;
+	MORE CLOUDS THAN SUN					= 13;
+	PARTLY SUNNY							= 14;
+	BROKEN CLOUDS							= 15;
+	MOSTLY CLOUDY							= 16;
+	CLOUDY									= 17;
+	OVERCAST								= 18;
+	LOW CLOUDS								= 19;
+	LIGHT FOG								= 20;
+	FOG										= 21;
+	DENSE FOG								= 22;
+	ICE FOG									= 23;
+	SANDSTORM								= 24;
+	DUSTSTORM								= 25;
+	INCREASING CLOUDINESS					= 26;
+	DECREASING CLOUDINESS					= 27;
+	CLEARING SKIES							= 28;
+	BREAKS OF SUN LATE						= 29;
+	EARLY FOG FOLLOWED BY SUNNY SKIES		= 30;
+	AFTERNOON CLOUDS						= 31;
+	MORNING CLOUDS							= 32;
+	SMOKE									= 33;
+	LOW LEVEL HAZE							= 34;
+
+	Precipitation Descriptors:
+
+	DRIZZLE									= 1;
+	SPRINKLES								= 2;
+	SCATTERED SHOWERS						= 3;
+	A FEW SHOWERS							= 4;
+	LIGHT SHOWERS							= 5;
+	PASSING SHOWERS							= 6;
+	LIGHT RAIN								= 7;
+	RAIN SHOWERS							= 8;
+	RAIN									= 9;
+	NUMEROUS SHOWERS						= 10;
+	SHOWERY									= 11;
+	HEAVY RAIN								= 12;
+	LOTS OF RAIN							= 13;
+	TONS OF RAIN							= 14;
+	FLASH FLOODS							= 15;
+	WIDELY SCATTERED TSTORMS				= 16;
+	ISOLATED TSTORMS						= 17;
+	A FEW TSTORMS							= 18;
+	THUNDERSHOWERS							= 19;
+	THUNDERSTORMS							= 20;
+	STRONG THUNDERSTORMS					= 21;
+	SEVERE THUNDERSTORMS					= 22;
+	HAIL									= 23;
+	TORNADO									= 24;
+	TROPICAL STORM							= 25;
+	HURRICANE								= 26;
+	LIGHT FREEZING RAIN						= 27;
+	LIGHT MIXTURE OF PRECIP					= 28;
+	SLEET									= 29;
+	ICY MIX									= 30;
+	FREEZING RAIN							= 31;
+	MIXTURE OF PRECIP						= 32;
+	HEAVY MIXTURE OF PRECIP					= 33;
+	SNOW CHANGING TO RAIN					= 34;
+	SNOW CHANGING TO AN ICY MIX				= 35;
+	AN ICY MIX CHANGING TO SNOW				= 36;
+	AN ICY MIX CHANGING TO RAIN				= 37;
+	RAIN CHANGING TO SNOW					= 38;
+	RAIN CHANGING TO AN ICY MIX				= 39;
+	SCATTERED FLURRIES						= 40;
+	SNOW FLURRIES							= 41;
+	LIGHT SNOW SHOWERS						= 42;
+	SNOW SHOWERS							= 43;
+	LIGHT SNOW								= 44;
+	SNOW									= 45;
+	MODERATE SNOW							= 46;
+	HEAVY SNOW								= 47;
+	SNOWSTORM								= 48;
+	BLIZZARD								= 49;
+	SPRINKLES EARLY							= 50;
+	SHOWERS EARLY							= 51;
+	LIGHT RAIN EARLY						= 52;
+	RAIN EARLY								= 53;
+	HEAVY RAIN EARLY						= 54;
+	TSTORMS EARLY							= 55;
+	FLURRIES EARLY							= 56;
+	SNOW SHOWERS EARLY						= 57;
+	LIGHT SNOW EARLY						= 58;
+	SNOW EARLY								= 59;
+	HEAVY SNOW EARLY						= 60;
+	LIGHT ICY MIX EARLY						= 61;
+	ICY MIX EARLY							= 62;
+	SPRINKLES LATE							= 63;
+	SHOWERS LATE							= 64;
+	LIGHT RAIN LATE							= 65;
+	RAIN LATE								= 66;
+	HEAVY RAIN LATE							= 67;
+	ISOLATED TSTORMS LATE					= 68;
+	SCATTERED TSTORMS LATE					= 69;
+	TSTORMS LATE							= 70;
+	FLURRIES LATE							= 71;
+	SNOW SHOWERS LATE						= 72;
+	LIGHT SNOW LATE							= 73;
+	SNOW LATE								= 74;
+	HEAVY SNOW LATE							= 75;
+	LIGHT ICY MIX LATE						= 76;
+	ICY MIX LATE							= 77;
+
+	Temperature Descriptors:
+
+	BRUTALLY COLD							= 1;
+	FRIGID									= 2;
+	COLD									= 3;
+	CHILLY									= 4;
+	NIPPY									= 5;
+	COOL									= 6;
+	REFRESHINGLY COOL						= 7;
+	MILD									= 8;
+	PLEASANTLY WARM							= 9;
+	WARM									= 10;
+	HOT										= 11;
+	AWFULLY HOT								= 12;
+
+	Additional Air Descriptors (Wind, Emotional, and Feels Like):
+
+	BREEZY									= 13;
+	WINDY									= 14;
+	GUSTY									= 15;
+	BLUSTERY								= 16;
+	VERY WINDY								= 17;
+	EXTREMELY WINDY							= 18;
+	HIGH WINDS								= 19;
+	BEAUTIFUL								= 20;
+	VERY NICE								= 21;
+	NICE									= 22;
+	DREARY									= 23;
+	SMOGGY									= 24;
+	LOW LEVEL POLLUTION						= 25;
+	BLOWING SNOW							= 26;
+	BLOWING SPRAY							= 27;
+	DRY										= 28;
+	COMFORTABLE								= 29;
+	CRISP									= 30;
+	RAW										= 31;
+	DAMP									= 32;
+	HUMID									= 33;
+	MUGGY									= 34;
+	SULTRY									= 35;
+	STEAMY									= 36;
+
+	UV Index Categories:
+	
+	MINIMAL									= 0;
+	LOW										= 3;
+	MODERATE								= 5;
+	HIGH									= 7;
+	EXTREME									= 10;
+--------------------------------------------------------------------------------
+Metric Conversion: 
+
+All of the fields for weather forecast and current condition data feeds are in metric [SI] units. Some of the fields may be signed integers (due to below zero conditions). When converting from metric [SI] units to Imperial units, the following formulas should be used:
+
+Temperature Fahrenheit = (Temperature Celsius  * 1.8) + 32.0
+
+1 inch of mercury = 33.865 millibars [inches of mercury should always be listed to at least the hundredths place]
+
+1 mile per hour = 1.61 * kilometers per hour
+
+1 inch = 2.5381 centimeters
+
+1 mile = 1.61 kilometers
+
+1 foot = 0.3048 meters
+--------------------------------------------------------------------------------
+
+Wind Direction Conversions:
+
+Wind directions are given as compass degrees where north = 0 and south = 180 as illustrated below:
+
+315   0    45
+   NW N NE
+     \!/
+270W -!- E 90
+     /!\
+   SW S SE
+225  180   135
+
+For the purpose of converting from compass degrees to compass heading, the following logic can be used:
+
+		if (WindDirection <= 11 || WindDirection >= 349)	
+			return "N";
+		else if (WindDirection < 34)
+			return "NNE";
+		else if (WindDirection < 56)
+			return "NE";
+		else if (WindDirection < 79)
+			return "ENE";
+		else if (WindDirection < 101)
+			return "E";
+		else if (WindDirection < 124)
+			return "ESE";
+		else if (WindDirection < 146)
+			return "SE";
+		else if (WindDirection < 169)
+			return "SSE";
+		else if (WindDirection < 191)
+			return "S";
+		else if (WindDirection < 214)
+			return "SSW";
+		else if (WindDirection < 236)
+			return "SW";
+		else if (WindDirection < 259)
+			return "WSW";
+		else if (WindDirection < 281)
+			return "W";
+		else if (WindDirection < 304)
+			return "WNW";
+		else if (WindDirection < 326)
+			return "NW";
+		else if (WindDirection < 349)
+			return "NNW";
+
+--------------------------------------------------------------------------------
+
+Displaying Precipitation Amounts:
+
+If only one precipitation amount is going to be displayed, the following logic should be used:
+
+if rainfall exists (an invalid value '*' is not in its place)
+	precipitation amount = rainfall amount;
+	
+else if snowfall exists (an invalid value '*' is not in its place)
+	precipitation amount = snowfall amount;
+	
+else
+	do not display any amount (precipitation amount = 0);
+	
+Only in rare mixed precipitation events will both a rainfall and snowfall amount be included. In such cases, preference should be given to the rainfall total.
+--------------------------------------------------------------------------------
+Assigning Icons:
+
+Icon assignment for weather forecasts and current conditions is based on precipitation and sky conditions. If a precipitation condition is available (in other words, there is NOT an invalid value '*' in the precipitation descriptor field), then a precipitation icon should be used. If there is no precipitation descriptor, then a sky icon should be used.
+
+The specifications for icon assignment are further detailed in an attached *.pdf file.
+--------------------------------------------------------------------------------
